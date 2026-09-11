@@ -1,0 +1,36 @@
+name: Daily Contribution
+
+on:
+  schedule:
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+jobs:
+  contribute:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Make daily contribution
+        run: |
+          mkdir -p .chore
+          FILE=".chore/$(date +%Y%m%d).md"
+          echo "## Daily Log - $(date +%Y-%m-%d)" > $FILE
+          echo "" >> $FILE
+          echo "Activity: $(date +%H:%M:%S)" >> $FILE
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add $FILE
+          git commit -m "chore: daily contribution $(date +%Y-%m-%d)"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.8.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main

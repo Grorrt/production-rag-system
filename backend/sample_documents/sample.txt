@@ -1,0 +1,5 @@
+React useEffect Cleanup
+
+The cleanup function in useEffect runs when the component unmounts.
+It is used to clean up subscriptions, timers, and event listeners.
+Return a function from the effect to set up cleanup.

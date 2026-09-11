@@ -1,0 +1,51 @@
+name: CI - Test Suite
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          pip install -r backend/requirements.txt
+
+      - name: Lint with Ruff
+        run: |
+          pip install ruff
+          ruff check backend/
+
+      - name: Type check with mypy
+        run: |
+          pip install mypy
+          mypy backend/ --ignore-missing-imports
+
+      - name: Run tests with pytest
+        run: |
+          pip install pytest pytest-cov
+          cd backend && python -m pytest tests/ -v --cov=app --cov-report=term-missing
+
+      - name: Build Docker images
+        run: |
+          docker build -t rag-backend -f backend/backend_dockerfile backend/
