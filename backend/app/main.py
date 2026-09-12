@@ -1,5 +1,5 @@
 """
-FastAPI application entry point for the Production RAG System.
+FastAPI application entry point for Ragora.
 Configures middleware, registers routes, and starts the server.
 """
 
@@ -79,7 +79,7 @@ def system_stats():
 
 @app.on_event("startup")
 async def startup_event():
-    logger.info("Starting Production RAG System", version=config.app_version)
+    logger.info("Starting Ragora", version=config.app_version)
     # Warm up pipeline components to catch errors early
     try:
         from backend.app.rag_pipeline.document_processing.embedding_generator import EmbeddingGenerator
@@ -97,4 +97,4 @@ async def startup_event():
 
 @app.on_event("shutdown")
 async def shutdown_event():
-    logger.info("Shutting down Production RAG System")
+    logger.info("Shutting down Ragora")

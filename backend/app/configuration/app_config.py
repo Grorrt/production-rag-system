@@ -6,7 +6,7 @@ _ENV_FILE = Path(__file__).parent.parent.parent / ".env"
 
 
 class AppConfig(BaseSettings):
-    app_name: str = "Production RAG System"
+    app_name: str = "Ragora"
     app_version: str = "1.0.0"
     debug: bool = False
 
@@ -50,7 +50,7 @@ class AppConfig(BaseSettings):
     langfuse_public_key: str = ""
     langfuse_secret_key: str = ""
 
-    cache_dir: str = str(Path.home() / ".cache" / "rag_system")
+    cache_dir: str = str(Path.home() / ".cache" / "ragora")
 
     model_config = {"env_file": str(_ENV_FILE), "env_file_encoding": "utf-8"}
 

@@ -109,7 +109,7 @@ function LoginForm({ onLogin }: { onLogin: (token: string, user: string) => void
             <div className="inline-flex items-center justify-center w-16 h-16 gradient-bg rounded-2xl mb-4 shadow-lg shadow-primary-500/25">
               <span className="text-2xl font-bold text-white">R</span>
             </div>
-            <h1 className="text-2xl font-bold">RAG System</h1>
+            <h1 className="text-2xl font-bold">Ragora</h1>
             <p className="text-surface-500 dark:text-surface-400 mt-1 text-sm">
               {isRegister ? "Create your account" : "Knowledge Assistant Login"}
             </p>

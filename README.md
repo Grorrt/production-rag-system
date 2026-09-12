@@ -1,6 +1,6 @@
 <div align="center">
-  <h1>🧠 Enterprise RAG Architecture</h1>
-  <p><b>Production-Grade Retrieval-Augmented Generation System</b></p>
+   <h1>Ragora</h1>
+   <p><b>Production-Grade Retrieval and Knowledge Intelligence</b></p>
   
   <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=FastAPI&logoColor=white" />
   <img src="https://img.shields.io/badge/LangChain-121212?style=for-the-badge&logo=chainlink&logoColor=white" />
@@ -12,10 +12,10 @@
 <br/>
 
 ## 🚀 Overview
-This repository contains a complete, production-ready **Retrieval-Augmented Generation (RAG)** pipeline designed for enterprise scaling. Unlike basic RAG tutorials, this system implements an agentic LangGraph workflow with strict self-grading mechanisms to ensure **zero hallucinations** and high accuracy (95%+).
+Ragora is a production-grade retrieval and knowledge intelligence platform. It is an enterprise-ready RAG platform that combines intelligent retrieval, self-evaluation, and grounded generation to deliver reliable answers from private knowledge sources. The system implements an agentic LangGraph workflow with grading and query-rewriting steps to improve answer grounding.
 
 ### 💡 Business Value
-- **Accuracy:** Self-critique node prevents hallucinated responses.
+- **Grounding:** Self-evaluation checks retrieved context before generation.
 - **Latency:** Optimized HNSW indexing via Qdrant Cloud.
 - **Cost-Efficiency:** Utilizes Groq LLM and Hugging Face BGE embeddings for maximum throughput at minimal cost.
 
@@ -58,7 +58,7 @@ graph TD
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/Haris-Ahmed83/production-rag-system.git
+   git clone https://github.com/Grorrt/production-rag-system.git
    cd production-rag-system
    ```
 
@@ -92,8 +92,7 @@ Standard RAG fails when the retrieved context doesn't contain the answer. This a
 3. If **NO**, the system rewrites the query and tries again (or triggers web search).
 4. If **YES**, it generates the final answer.
 
-## 👨‍💻 Author
-**Muhammad Haris**
-*AI Engineer & Enterprise Architect*
-- 🌐 [Portfolio](https://haris.primevoai.com)
-- 💼 [LinkedIn](https://www.linkedin.com/in/muhammadharis-tech)
+## 👨‍💻 Ragora Labs
+**Ragora** is maintained by **Ayodeji Asekunowo**.
+- Email: [ayodejiaseks@gmail.com](mailto:ayodejiaseks@gmail.com)
+- LinkedIn: [Ayodeji Asekunowo](https://www.linkedin.com/in/ayodeji-asekunowo-grorrrt/)

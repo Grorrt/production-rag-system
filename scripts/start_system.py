@@ -10,7 +10,7 @@ sys.path.insert(0, PROJECT_ROOT)
 os.chdir(PROJECT_ROOT)
 
 print("=" * 60)
-print("  Production RAG System — Starting...")
+print("  Ragora — Starting...")
 print("=" * 60)
 
 

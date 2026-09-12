@@ -25,7 +25,7 @@ function Sidebar({ currentPage, onPageChange, username, onLogout }: SidebarProps
             <span className="text-sm font-bold text-white">R</span>
           </div>
           <div className="min-w-0">
-            <h1 className="text-sm font-bold text-surface-900 dark:text-surface-50">RAG System</h1>
+            <h1 className="text-sm font-bold text-surface-900 dark:text-surface-50">Ragora</h1>
             <p className="text-[10px] text-surface-400 dark:text-surface-500">Knowledge Assistant</p>
           </div>
         </div>

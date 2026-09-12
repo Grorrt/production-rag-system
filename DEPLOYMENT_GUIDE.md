@@ -1,4 +1,4 @@
-# Deployment Guide — Production RAG System
+# Deployment Guide — Ragora
 
 ## Architecture
 
@@ -22,10 +22,10 @@
 | Component | URL |
 |-----------|-----|
 | **Frontend** | `https://frontend-olive-one-a95hrma84g.vercel.app` |
-| **Backend API** | `https://haris-83-rag-backend.hf.space` |
-| **Health Check** | `https://haris-83-rag-backend.hf.space/api/health` |
-| **Docker Image** | `ghcr.io/haris-ahmed83/production-rag-system` |
-| **GitHub** | `https://github.com/Haris-Ahmed83/production-rag-system` |
+| **Backend API** | `<your-hugging-face-space-url>` |
+| **Health Check** | `<your-hugging-face-space-url>/api/health` |
+| **Docker Image** | `<your-container-registry>/ragora-backend` |
+| **GitHub** | `https://github.com/Grorrt/production-rag-system` |
 
 ---
 
@@ -93,7 +93,7 @@ CMD ["uvicorn", "backend.app.main:app", "--host", "0.0.0.0", "--port", "7860"]
 
 ### Rewrites (vercel.json)
 
-Requests to `/api/*` proxy to the HF Space backend:
+Requests to `/api/*` proxy to the deployed backend. Replace the placeholder with the URL of your own Hugging Face Space:
 
 ```json
 {
@@ -101,7 +101,7 @@ Requests to `/api/*` proxy to the HF Space backend:
   "outputDirectory": "dist",
   "framework": "vite",
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "https://haris-83-rag-backend.hf.space/api/$1" }
+    { "source": "/api/(.*)", "destination": "https://<your-hugging-face-space-url>/api/$1" }
   ]
 }
 ```
@@ -138,14 +138,14 @@ npx vercel --prod
 Docker images are auto-published to GHCR on every push to `main`:
 
 ```
-ghcr.io/haris-ahmed83/production-rag-system:latest
-ghcr.io/haris-ahmed83/production-rag-system:<commit-sha>
+<your-container-registry>/ragora-backend:latest
+<your-container-registry>/ragora-backend:<commit-sha>
 ```
 
 ### Usage
 ```bash
-docker pull ghcr.io/haris-ahmed83/production-rag-system:latest
-docker run -p 8000:8000 ghcr.io/haris-ahmed83/production-rag-system
+docker pull <your-container-registry>/ragora-backend:latest
+docker run -p 8000:8000 <your-container-registry>/ragora-backend
 ```
 
 ---
@@ -158,7 +158,7 @@ docker run -p 8000:8000 ghcr.io/haris-ahmed83/production-rag-system
 
 ### Backend
 ```bash
-git clone https://github.com/Haris-Ahmed83/production-rag-system.git
+git clone https://github.com/Grorrt/production-rag-system.git
 cd production-rag-system/backend
 pip install -r requirements.txt
 echo "QDRANT_HOST=:memory:" > .env
@@ -177,10 +177,10 @@ npm run dev
 ## Stress Testing
 
 ```bash
-python C:\Users\haris\AppData\Local\Temp\complex_test.py
+python path/to/complex_test.py
 ```
 
-Tests 22 queries across 13 complex documents. Expected accuracy: **95%+**.
+Run the available complex-query test script against your configured environment.
 
 ---
 

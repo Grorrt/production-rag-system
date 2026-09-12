@@ -3,6 +3,6 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "https://haris-83-rag-backend.hf.space/api/$1" }
+    { "source": "/api/(.*)", "destination": "https://<your-hugging-face-space-url>/api/$1" }
   ]
 }
